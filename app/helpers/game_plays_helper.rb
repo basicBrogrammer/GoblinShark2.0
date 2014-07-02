@@ -35,32 +35,29 @@ module GamePlaysHelper
   #   end
 
   def senses
-   @game_plays.last.room.room_options.each do |x|
+   @current_room.room_options.each do |x|
+     @sense = ""
      if Room.find(x).kracken == true
-      return  "My spidey senes fear the Kracken is near"
-
-
-    elsif Room.find(x).lochness_monster == true
-      return "My spidey senes fear the Lochness Monster is near"
-
-
-    elsif Room.find(x).iceberg == true
-      return  "The water is really fridged. There may be an iceberg near by."
-
-
-    elsif Room.find(x).whirlpool == true
-       return "I feel a disturbance in the ether. There must be a whirlpool near."
-
-
-     elsif
-      Room.find(x).goblin_shark == true
-      return "Do you hear that? Sounds like the dreaded Goblin shark is near"
-    else
-      return nil
+        @sense += " My spidey senes fear the Kracken is near. "
     end
 
+    if Room.find(x).lochness_monster == true
+      @sense += " My spidey senes fear the Lochness Monster is near. "
+    end
 
- end
+    if Room.find(x).iceberg == true
+      @sense += " The water is really fridged. There may be an iceberg near by. "
+    end
+
+    if Room.find(x).whirlpool == true
+      @sense +=  " I feel a disturbance in the ether. There must be a whirlpool near. "
+    end
+
+    if Room.find(x).goblin_shark == true
+      @sense +=   " Do you hear that? Sounds like the dreaded Goblin shark is near. "
+    end
+
+   end
   end
 
 
