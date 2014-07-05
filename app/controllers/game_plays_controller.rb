@@ -18,10 +18,11 @@ class GamePlaysController < ApplicationController
   end
 
   def restart
-    Room.destroy_all
-    GamePlay.destroy_all
 
-    Rails.application.load_seed
+    GamePlay.destroy_all
+     set_up
+    @clean = Room.where(goblin_shark: false, lochness_monster:false, whirlpool:false, kracken:false, iceberg:false)
+    GamePlay.create(room: @clean.find(rand(@clean.size)))
     redirect_to root_url
   end
 
@@ -38,8 +39,7 @@ class GamePlaysController < ApplicationController
   def shoot
     if Room.find(params[:weapon]).goblin_shark
       flash[:shoot] = "You win"
-      GamePlay.delete_all
-      GamePlay.create(room: Room.find_by(goblin_shark: false, lochness_monster:false, whirlpool:false, kracken:false, iceberg:false))
+
     else
       flash[:miss] =  "Your anchor missed"
     end

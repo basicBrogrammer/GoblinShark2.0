@@ -13,7 +13,7 @@
     <h5>Your Adventure History:</h5>
     <% @game_plays.reverse_order.each do |game_play| %>
         <tr>
-          <%@monster = false%>
+          <% @monster = false%>
           <%@kracken = false%>
           <td><center><%= game_play.room_id %></center></td>
         </tr>
@@ -22,6 +22,7 @@
   </div>
   <div class="large-8 columns">
     <p> You are currently in room: <%= @current_room.id %></p>
+    <p> GS is in room <%= Room.find_by(goblin_shark: true).id %></p>
     <!--#game status-->
     <div class="row">
       <%= goblin(@current_room)%>
@@ -34,6 +35,7 @@
       <%end%>
       <%= iceberg(@current_room.iceberg) %>
     </div>
+
     <%if @gameover == true%>
         <%= link_to "Play Again!", root_path, class: "button"%>
     <%end%>
@@ -48,6 +50,7 @@
     <!--#flash-->
     <% if flash[:shoot] %>
         <div class="alert-box info-radius"><%=flash[:shoot] %></div>
+        <%= button_to "New game?", {action: "restart"} %>
     <% end %>
     <% if flash[:miss] %>
         <div class="alert-box info-radius"><%=flash[:miss] %></div>

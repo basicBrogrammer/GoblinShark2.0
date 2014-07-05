@@ -1,5 +1,5 @@
 module GamePlaysHelper
-
+include RoomsHelper
   def  goblin(monster)
     if monster == true
       GamePlay.delete_all

@@ -35,7 +35,7 @@
     Room.update(@randroom.pop, lochness_monster: true)
     Room.update(@randroom.pop, whirlpool: true)
 
-  @clean = Room.where(goblin_shark: false, lochness_monster:false, whirlpool:false, kracken:false, iceberg:false)
+    @clean = Room.where(goblin_shark: false, lochness_monster:false, whirlpool:false, kracken:false, iceberg:false)
 
 
-GamePlay.create(room: @clean.find(rand(@clean.size)))
+    GamePlay.create(room: @clean.find(rand(@clean.size)))
