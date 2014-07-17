@@ -1,8 +1,9 @@
 class GamePlaysController < ApplicationController
   include GamePlaysHelper
-  before_action :set_game_play, only: [:show, :edit, :update, :destroy]
+   before_action :restart, only: [:show, :edit, :update, :destroy]
 
   def index
+    newgame if GamePlay.all == []
     @game_plays = GamePlay.all
     @current_room = @game_plays.last.room
     @gameover = false
@@ -13,10 +14,7 @@ class GamePlaysController < ApplicationController
   end
 
   def restart
-    GamePlay.destroy_all
-    @clean = Room.where(goblin_shark: false, lochness_monster:false, whirlpool:false, kracken:false, iceberg:false)
-    GamePlay.create(room: @clean.find(rand(@clean.size)))
-    redirect_to root_url
+    newgame
   end
 
   def new
