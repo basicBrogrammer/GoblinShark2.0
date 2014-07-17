@@ -48,12 +48,9 @@
     <% end %>
 
 
-    <%if @gameover != true%>
+    <%if @gameover != true && @monster == false%>
         <p><% senses %></p>
         <p><%= @sense if @sense != "" %></p>
-
-        <%if @monster == false %>
-
 
             <h3>What room would you like to go to next?</h3>
 
@@ -67,7 +64,7 @@
               <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @current_room.room_options[1] }}, class: "round tiny button" %></li>
               <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @current_room.room_options[2] }}, class: "round tiny button" %></li>
             </ul>
-        <%end%>
+
     <% end %>
   </div>
 </div>

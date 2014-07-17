@@ -6,6 +6,13 @@ module GamePlaysHelper
     @clean = Room.where(goblin_shark: false, lochness_monster:false, whirlpool:false, kracken:false, iceberg:false)
     GamePlay.create(room: @clean.find(rand(@clean.size)))
   end
+  def reset_game
+
+    reset_rooms
+    GamePlay.delete_all
+    @clean = Room.where(goblin_shark: false, lochness_monster:false, whirlpool:false, kracken:false, iceberg:false)
+    GamePlay.create(room: @clean.find(rand(@clean.size)))
+  end
 
   def status(room)
     if room.goblin_shark

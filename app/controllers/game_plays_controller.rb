@@ -14,7 +14,8 @@ class GamePlaysController < ApplicationController
   end
 
   def restart
-    newgame
+    reset_game
+    redirect_to root_url
   end
 
   def new
