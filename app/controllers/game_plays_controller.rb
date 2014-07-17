@@ -1,6 +1,5 @@
 class GamePlaysController < ApplicationController
   include GamePlaysHelper
-   before_action :restart, only: [:show, :edit, :update, :destroy]
 
   def index
     newgame if GamePlay.all == []

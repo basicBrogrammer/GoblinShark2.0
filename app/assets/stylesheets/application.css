@@ -12,10 +12,70 @@
  *
  *= require_tree .
  *= require_self
- */
-
- /*= require foundation */
-
-/*
+ *= require foundation
  *= require font-awesome
  */
+
+.main{
+    background-image: url("background.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+}
+.top{
+    background: white;
+    border-radius: 25px;
+
+}
+.top h3{
+    font-family: 'Audiowide', cursive;
+    margin-top: 10px;
+}
+.top a{
+    margin-top: 10px;
+    color:white;
+}
+.left{
+    margin: 10px;
+    background: whitesmoke;
+    min-height: 500px;
+    height: 100%;
+    border-radius: 25px;
+}
+.left h5{
+    margin-top: 10px;
+    text-align: center;
+    font-family: 'Audiowide', cursive;
+}
+.left ul{
+    list-style: none;
+    text-align: center;
+}
+.right{
+    margin: 10px;
+    background: whitesmoke;
+    height: 100%;
+    border-radius: 25px;
+    padding: 0 10%;
+    text-align: center;
+}
+.senses{
+    background: orangered;
+    color: ghostwhite;
+    font-family: 'Playfair Display SC', serif;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.right h5{
+    margin-top: 10px;
+    text-align: center;
+    font-family: 'Audiowide', cursive;
+}
+.right h3{
+
+    text-align: center;
+    font-family: 'Audiowide', cursive;
+}
+.right .inline-list{
+    margin: 0 15%;
+}

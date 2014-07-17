@@ -1,8 +1,9 @@
-<div class="row">
+<div class="row top">
   <div class="large-12 columns">
     <ul class="inline-list">
       <li><h3>Let's Hunt The Dreaded Golbin Sharky!</h3></li>
-      <li><%= link_to "Instructions", static_pages_instructions_path, class: "round tiny button" %></li>
+
+      <li><a href="#" data-reveal-id="myModal" class=" round tiny button">Instructions</a></li>
     </ul>
   </div>
 
@@ -10,27 +11,26 @@
 
 <div class="row">
   <div class="large-3 columns ">
+    <div class="left">
     <h5>Your Adventure History:</h5>
+    <ul>
     <% @game_plays.reverse_order.each do |game_play| %>
-        <tr>
+
           <% @monster = false%>
-          <%@kracken = false%>
-          <td><%= game_play.room_id %></td>
-        </tr>
+
+          <li><%= game_play.room_id %></li>
+
 
     <% end %>
+    </ul>
+    </div>
   </div>
 
 
   <div class="large-8 columns">
-    <p> You are currently in room: <%= @current_room.id %></p>
-    <ul class="inline-list">
-      <li> GS is in room <%= Room.find_by(goblin_shark: true).id %></li>
-      <li> kracken: <%= Room.find_by(kracken: true).id %></li>
-      <li> lochness: <%= Room.find_by(lochness_monster: true).id %></li>
-      <li> ice: <%= Room.find_by(iceberg: true).id %></li>
-      <li> whirlpool: <%= Room.find_by(whirlpool: true).id %></li>
-    </ul>
+    <div class="right">
+    <h5> You are currently in room: <%= @current_room.id %></h5>
+
 
     <%= status(@current_room) %>
     <% if @gameover %>
@@ -50,21 +50,35 @@
 
     <%if @gameover != true && @monster == false%>
         <p><% senses %></p>
+          <div class="senses">
         <p><%= @sense if @sense != "" %></p>
-
+          </div>
             <h3>What room would you like to go to next?</h3>
 
-            <ul class="inline-list">
+            <ul class="large-block-grid-3">
               <li><%= button_to @current_room.room_options[0], {action: "new", params: {room_id: @current_room.room_options[0] }}, class: "round tiny button" %></li>
               <li><%= button_to @current_room.room_options[1], {action: "new", params: {room_id: @current_room.room_options[1] }}, class: "round tiny button" %></li>
               <li><%= button_to @current_room.room_options[2], {action: "new", params: {room_id: @current_room.room_options[2] }}, class: "round tiny button" %></li>
-            </ul>
-            <ul class="inline-list">
+
               <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @current_room.room_options[0] }}, class: "round tiny button" %></li>
               <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @current_room.room_options[1] }}, class: "round tiny button" %></li>
               <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @current_room.room_options[2] }}, class: "round tiny button" %></li>
             </ul>
 
     <% end %>
+    </div>
   </div>
+</div>
+
+<div id="myModal" class="reveal-modal" data-reveal>
+  <h2>Hunting Down the Goblin Shark!</h2>
+  <p>You are on an Under water adventure hunting the dreaded Goblin Shark. <br>
+    Danger is around every corner. There is the infamous Kracken and Lochness monster <br>
+    These creatures will take you to a different location if you have to face them. <br>
+    Also, if you enter a room with an iceberg or whirlpool you will surely die! <br>
+    Use your senses to make the best choice to venture forward.<br>
+    When you feel the Goblin shark is near Shoot an Anchor into his room.<br>
+    Good luck!
+  </p>
+  <a class="close-reveal-modal">&#215;</a>
 </div>
