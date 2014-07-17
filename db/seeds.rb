@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+
     Room.create(goblin_shark: false, kracken: false,iceberg: false, lochness_monster: false, whirlpool: false, room_options: [2,5,8])
     Room.create(goblin_shark: false, kracken: false,iceberg: false, lochness_monster: false, whirlpool: false, room_options: [1,10,3])
     Room.create(goblin_shark: false, kracken: false,iceberg: false, lochness_monster: false, whirlpool: false, room_options: [2,4,12])
@@ -39,3 +40,4 @@
 
 
     GamePlay.create(room: @clean.find(rand(@clean.size)))
+

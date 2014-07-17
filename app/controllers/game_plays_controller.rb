@@ -2,37 +2,25 @@ class GamePlaysController < ApplicationController
   include GamePlaysHelper
   before_action :set_game_play, only: [:show, :edit, :update, :destroy]
 
-  # GET /game_plays
-  # GET /game_plays.json
   def index
     @game_plays = GamePlay.all
     @current_room = @game_plays.last.room
     @gameover = false
-
   end
 
-  # GET /game_plays/1
-  # GET /game_plays/1.json
   def show
 
   end
 
   def restart
-
     GamePlay.destroy_all
-     set_up
     @clean = Room.where(goblin_shark: false, lochness_monster:false, whirlpool:false, kracken:false, iceberg:false)
     GamePlay.create(room: @clean.find(rand(@clean.size)))
     redirect_to root_url
   end
 
-  # GET /game_plays/new
   def new
-
     @game_play =GamePlay.create(room_id: params[:room_id])
-
-    # @game_plays = GamePlay.all
-    # monster
     redirect_to root_url
   end
 
@@ -46,13 +34,10 @@ class GamePlaysController < ApplicationController
   redirect_to root_url
   end
 
-  # GET /game_plays/1/edit
   def edit
 
   end
 
-  # POST /game_plays
-  # POST /game_plays.json
   def create
     @game_play = GamePlay.new(game_play_params)
 
@@ -67,8 +52,6 @@ class GamePlaysController < ApplicationController
     end
   end
 
-  # PATCH/PUT /game_plays/1
-  # PATCH/PUT /game_plays/1.json
   def update
     respond_to do |format|
       if @game_play.update(game_play_params)
@@ -81,8 +64,6 @@ class GamePlaysController < ApplicationController
     end
   end
 
-  # DELETE /game_plays/1
-  # DELETE /game_plays/1.json
   def destroy
     @game_play.destroy
     respond_to do |format|

@@ -15,40 +15,31 @@
         <tr>
           <% @monster = false%>
           <%@kracken = false%>
-          <td><center><%= game_play.room_id %></center></td>
+          <td><%= game_play.room_id %></td>
         </tr>
 
     <% end %>
   </div>
+
+
   <div class="large-8 columns">
     <p> You are currently in room: <%= @current_room.id %></p>
-    <p> GS is in room <%= Room.find_by(goblin_shark: true).id %></p>
-    <!--#game status-->
-    <div class="row">
-      <%= goblin(@current_room)%>
-      <%if @current_room.lochness_monster%>
-          <% @monster = true %>
-      <%end%>
-      <%= whirlpool(@current_room.whirlpool)%>
-      <%if @current_room.kracken %>
-          <%@kracken = true%>
-      <%end%>
-      <%= iceberg(@current_room.iceberg) %>
-    </div>
+    <ul class="inline-list">
+      <li> GS is in room <%= Room.find_by(goblin_shark: true).id %></li>
+      <li> kracken: <%= Room.find_by(kracken: true).id %></li>
+      <li> lochness: <%= Room.find_by(lochness_monster: true).id %></li>
+      <li> ice: <%= Room.find_by(iceberg: true).id %></li>
+      <li> whirlpool: <%= Room.find_by(whirlpool: true).id %></li>
+    </ul>
 
-    <%if @gameover == true%>
-        <%= link_to "Play Again!", root_path, class: "button"%>
-    <%end%>
-    <% if @monster == true %>
-        <%= button_to "The Lochness Monster is carrying you to a new room! Click here to play dead.", {action: "new", params: {room_id:rand(1..20) }}, class: " button alert" %>
+    <%= status(@current_room) %>
+    <% if @gameover %>
+        <br>
+        <%= link_to "Play Again!", root_path, class: "alert button" %>
     <% end %>
 
-    <% if @kracken == true %>
-        <%= button_to "The Kracken has emerged and is carrying you to a new room! Click here to play dead.", {action: "new", params: {room_id:rand(1..20) }}, class: " button alert" %>
-    <% end %>
-
-    <!--#flash-->
     <% if flash[:shoot] %>
+        <%@gameover = true%>
         <div class="alert-box info-radius"><%=flash[:shoot] %></div>
         <%= button_to "New game?", {action: "restart"} %>
     <% end %>
@@ -59,9 +50,11 @@
 
     <%if @gameover != true%>
         <p><% senses %></p>
-        <p><%= @sense.to_s if @sense != [] %></p>
+        <p><%= @sense if @sense != "" %></p>
 
-        <%if @monster == false &&  @kracken == false%>
+        <%if @monster == false %>
+
+
             <h3>What room would you like to go to next?</h3>
 
             <ul class="inline-list">

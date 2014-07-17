@@ -1,28 +1,15 @@
-== README
+==Hunt the Goblin Shark  README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To start play: 
+* Download app, open in terminal, rake db:drop, rake db:migrate, rake db:seed.
+* Go to locah host 0.0.0.0:3000 and you're ready to play!
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Play description:
+      You are on an Under water adventure hunting the dreaded Goblin Shark.
+      Danger is around every corner. There is the infamous Kracken and Lochness monster
+      These creatures will take you to a different location if you have to face them. 
+      Also, if you enter a room with an iceberg or whirlpool you will surely die! 
+      Use your senses to make the best choice to venture forward.
+      When you feel the Goblin shark is near Shoot an Anchor into his room.
+      Good luck!
