@@ -1,8 +1,11 @@
 ==Hunt the Goblin Shark  README
 
 To start play: 
-* Download app, open in terminal, rake db:drop, rake db:migrate, rake db:seed.
-* Go to locah host 0.0.0.0:3000 and you're ready to play!
+* Git clone the jeremy branch.
+* Run: Bundle install
+* Run: rake db:migrate
+* Run: rails server
+* Go to local host 0.0.0.0:3000 and you're ready to play!
 
 
 Play description:
